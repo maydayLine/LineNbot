@@ -1135,8 +1135,8 @@ def lineBot(op):
                         try:
                             c = int(x[2])
                             for c in range(c):
-                                cl.sendMessage(c64ac8c3bc1e3b0553d4a2549b0e5446f,str(ret_)+ contact.displayName + "\n" + x[1])
-                                cl.sendMessage(c74e93d7fbb87a1bea7cb24efb81703e3,str(ret_)+ contact.displayName + "\n" + x[1])
+                                cl.sendMessage("c64ac8c3bc1e3b0553d4a2549b0e5446f",str(ret_)+ contact.displayName + "\n" + x[1])
+                                cl.sendMessage("c74e93d7fbb87a1bea7cb24efb81703e3",str(ret_)+ contact.displayName + "\n" + x[1])
                         except:
                             cl.sendMessage(to,"無法正確執行此指令")
     #====================================================================================================================================================================遊客
