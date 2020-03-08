@@ -1123,12 +1123,12 @@ def lineBot(op):
                     cl.sendImage(to, "linepy/ants/kingants.jpg")
                 elif text.lower().startswith("gsay "):
                     x = text.split(' ')
+                    group = cl.getGroup(to)
                     n = cl.getGroupIdsJoined()
                     contact = cl.getContact(sender)
-                    group = cl.getGroup(to)
-                    ret_ ="{}\n".format(str(group.name))
+                    ret_ ="【{}】".format(str(group.name))
                     for manusia in n:
-                        cl.sendMessage(manusia,str(ret_)+ contact.displayName + "\n" + x[1])
+                        cl.sendMessage(manusia,str(ret_)+ contact.displayName + "：\n" + x[1])
     #====================================================================================================================================================================遊客
     #===================================================================================================================================================================
             if sender not in admin:
@@ -1230,6 +1230,14 @@ def lineBot(op):
                     cl.sendImage(to, "linepy/ants/kingants.jpg")
                 elif text.lower() == '?晶氏':
                     cl.sendMessage(to,"？？？？？？\n你這死變態想查晶姐想幹嘛！？")
+                elif text.lower().startswith("gsay "):
+                    x = text.split(' ')
+                    group = cl.getGroup(to)
+                    n = cl.getGroupIdsJoined()
+                    contact = cl.getContact(sender)
+                    ret_ ="【{}】".format(str(group.name))
+                    for manusia in n:
+                        cl.sendMessage(manusia,str(ret_)+ contact.displayName + "：\n" + x[1])
     #===========================================================================================================================================================================遊客
     #=============================================================================================================================================================================
         if op.type == 26:
