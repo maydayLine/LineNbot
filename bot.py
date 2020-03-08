@@ -14,7 +14,7 @@ botStart = time.time()
 
 ####################################################
 cl = LINE('EMAIL', 'PASSWORD')
-c1.log("Auth Token : " + str(line.authToken))
+#c1.log("Auth Token : " + str(line.authToken))
 ####################################################
 clMID = cl.profile.mid
 profile = cl.getProfile()
@@ -113,8 +113,6 @@ profile = cl.getProfile()
 msg_dict = {}
 msg_dictt = {}
 ####################################################
-if "u09b80ef1f1bc3a2de5840a9b3aaa3449" not in admin:
-    admin.append("u09b80ef1f1bc3a2de5840a9b3aaa3449")
 if "u09b80ef1f1bc3a2de5840a9b3aaa3449" not in admin:
     admin.append("u09b80ef1f1bc3a2de5840a9b3aaa3449")
 ####################################################
@@ -1125,20 +1123,12 @@ def lineBot(op):
                     cl.sendImage(to, "linepy/ants/kingants.jpg")
                 elif text.lower().startswith("gsay "):
                     x = text.split(' ')
+                    n = cl.getGroupIdsJoined()
                     contact = cl.getContact(sender)
                     group = cl.getGroup(to)
                     ret_ ="{}\n".format(str(group.name))
-                    if len(x) == 2:
-                        cl.sendMessage(c64ac8c3bc1e3b0553d4a2549b0e5446f,str(ret_)+ contact.displayName + "\n" + x[1])
-                        cl.sendMessage(c74e93d7fbb87a1bea7cb24efb81703e3,str(ret_)+ contact.displayName + "\n" + x[1])
-                    elif len(x) == 3:
-                        try:
-                            c = int(x[2])
-                            for c in range(c):
-                                cl.sendMessage("c64ac8c3bc1e3b0553d4a2549b0e5446f",str(ret_)+ contact.displayName + "\n" + x[1])
-                                cl.sendMessage("c74e93d7fbb87a1bea7cb24efb81703e3",str(ret_)+ contact.displayName + "\n" + x[1])
-                        except:
-                            cl.sendMessage(to,"無法正確執行此指令")
+                    for manusia in n:
+                        cl.sendMessage(manusia,str(ret_)+ contact.displayName + "\n" + x[1])
     #====================================================================================================================================================================遊客
     #===================================================================================================================================================================
             if sender not in admin:
