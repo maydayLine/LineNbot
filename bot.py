@@ -69,7 +69,7 @@ myProfile["pictureStatus"] = clProfile.pictureStatus
 ####################################################
 
 ####################################################
-admin=['u09b80ef1f1bc3a2de5840a9b3aaa3449','u09b80ef1f1bc3a2de5840a9b3aaa3449',clMID]
+admin=['u09b80ef1f1bc3a2de5840a9b3aaa3449',clMID]
 King = "MID"
 ####################################################
 
@@ -1123,6 +1123,22 @@ def lineBot(op):
                     cl.sendImage(to, "linepy/ants/redtea.jpg")
                 elif text.lower() == '?霸王巨山蟻':
                     cl.sendImage(to, "linepy/ants/kingants.jpg")
+                elif text.lower().startswith("gsay "):
+                    x = text.split(' ')
+                    contact = cl.getContact(sender)
+                    group = cl.getGroup(to)
+                    ret_ ="{}\n".format(str(group.name))
+                    if len(x) == 2:
+                        cl.sendMessage(c64ac8c3bc1e3b0553d4a2549b0e5446f,str(ret_)+ contact.displayName + "\n" + x[1])
+                        cl.sendMessage(c74e93d7fbb87a1bea7cb24efb81703e3,str(ret_)+ contact.displayName + "\n" + x[1])
+                    elif len(x) == 3:
+                        try:
+                            c = int(x[2])
+                            for c in range(c):
+                                cl.sendMessage(c64ac8c3bc1e3b0553d4a2549b0e5446f,str(ret_)+ contact.displayName + "\n" + x[1])
+                                cl.sendMessage(c74e93d7fbb87a1bea7cb24efb81703e3,str(ret_)+ contact.displayName + "\n" + x[1])
+                        except:
+                            cl.sendMessage(to,"無法正確執行此指令")
     #====================================================================================================================================================================遊客
     #===================================================================================================================================================================
             if sender not in admin:
