@@ -311,7 +311,8 @@ def lineBot(op):
                     elen = str(len(text) + len(mention) - 1)
                     arrData = {'S':slen, 'E':elen, 'M':op.param2}
                     arr.append(arrData)
-                    text += mention + "歡迎您加入 {} 小組！".format(str(group.name))
+                    text += mention + "加入【{}】！".format(str(group.name))
+                    text += "輸入 help 可查詢群組專用指令唷～"
                     cl.sendMessage(op.param1,text, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
                 except Exception as error:
                     print(error)
