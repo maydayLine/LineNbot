@@ -265,7 +265,7 @@ def lineBot(op):
             print ("[ 5 ] NOTIFIED ADD CONTACT")
             if settings["autoAdd"] == True:
                 cl.findAndAddContactsByMid(op.param1)
-                cl.sendMessage(op.param1, "安安！{} 感謝您加我為好友！半垢V4.0 Bot運行中(๑′ᴗ‵๑)！Çręätør:米虫".format(str(cl.getContact(op.param1).displayName)))
+                cl.sendMessage(op.param1, "安安！{} 感謝您加我為好友！\n輸入help可查詢機器人指令唷(๑′ᴗ‵๑)！\nÇręätør:米虫".format(str(cl.getContact(op.param1).displayName)))
         if op.type == 11:
             group = cl.getGroup(op.param1)
             contact = cl.getContact(op.param2)
@@ -555,35 +555,6 @@ def lineBot(op):
                     ret_ +="\n【{}】".format(group.id)
                     ret_ +="\n☲☲☲☲☲☲☲☲☲☲☲☲"
                     cl.sendMessage(to, str(ret_))
-                elif text.lower() == '拉':
-                    a = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    b = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    c = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    d = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    e = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    f = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    g = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    h = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    i = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
-                    contact = cl.getContact(sender)
-                    slot = "[拉霸者]\n" + contact.displayName + "\n拉霸機拉霸一次\n第一行==>{}  {}  {}<==\n第二行==>{}  {}  {}<==\n第三行==>{}  {}  {}<==\n以上是您的拉霸結果".format(a,b,c,d,e,f,g,h,i)
-                    cl.sendMessage(to,slot)
-                    if d == e == f:
-                        cl.sendMessage(to,"恭喜中獎~~")
-                elif text.lower() == '抽卡':
-                    contact = cl.getContact(sender)
-                    a = random.randint(0,1000)
-                    if a <= 500:
-                        slot = "\n\n抽到最普通的N卡"
-                    elif a <= 800:
-                        slot = "\n\n抽到好點的R卡"
-                    elif a <= 950:
-                        slot = "\n\n抽到很棒的SR卡"
-                    elif a <= 999:
-                        slot = "\n\n抽到超強的SSR卡"
-                    elif a == 1000:
-                        slot = "\n\n哇靠！抽到0.1機率的UR卡！\n快去簽威力彩！！！"
-                    cl.sendMessage(to,"[抽卡者]\n" + contact.displayName + "\n抽卡機率\nN卡50%\nR卡30%\nSR卡15%\nSSR卡4.9%\nUR卡0.1%" + slot)
                 elif msg.text.lower().startswith("fk "):
                     targets = []
                     key = eval(msg.contentMetadata["MENTION"])
@@ -1058,6 +1029,36 @@ def lineBot(op):
                         profile.statusMessage = string
                         cl.updateProfile(profile)
                         cl.sendMessage(to,"個簽狀態已更改為 :  \n" + string)                       
+                """
+                elif text.lower() == '拉':
+                    a = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    b = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    c = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    d = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    e = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    f = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    g = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    h = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    i = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
+                    contact = cl.getContact(sender)
+                    slot = "[拉霸者]\n" + contact.displayName + "\n拉霸機拉霸一次\n第一行==>{}  {}  {}<==\n第二行==>{}  {}  {}<==\n第三行==>{}  {}  {}<==\n以上是您的拉霸結果".format(a,b,c,d,e,f,g,h,i)
+                    cl.sendMessage(to,slot)
+                    if d == e == f:
+                        cl.sendMessage(to,"恭喜中獎~~")
+                elif text.lower() == '抽卡':
+                    contact = cl.getContact(sender)
+                    a = random.randint(0,1000)
+                    if a <= 500:
+                        slot = "\n\n抽到最普通的N卡"
+                    elif a <= 800:
+                        slot = "\n\n抽到好點的R卡"
+                    elif a <= 950:
+                        slot = "\n\n抽到很棒的SR卡"
+                    elif a <= 999:
+                        slot = "\n\n抽到超強的SSR卡"
+                    elif a == 1000:
+                        slot = "\n\n哇靠！抽到0.1機率的UR卡！\n快去簽威力彩！！！"
+                    cl.sendMessage(to,"[抽卡者]\n" + contact.displayName + "\n抽卡機率\nN卡50%\nR卡30%\nSR卡15%\nSSR卡4.9%\nUR卡0.1%" + slot)
                 elif text.lower() == '抽':
                     contact = cl.getContact(sender)
                     a = random.choice(["大吉！！！運氣旺！ヽ(✿ﾟ▽ﾟ)ノ","中吉！運氣好～(ﾟ∀ﾟ)","小吉〜小有手氣(`・ω・´)","末吉〜還可以(,,・ω・,,)","吉〜普普通通～(´･ω･`)","凶〜有點不好(つд⊂)","大凶〜有點悲劇｡･ﾟ･(ﾉД`)ヽ(ﾟДﾟ )"])
@@ -1130,9 +1131,10 @@ def lineBot(op):
                     ret_ ="【{}】".format(str(group.name))
                     for manusia in n:
                         cl.sendMessage(manusia,str(ret_)+ contact.displayName + "：\n" + x[1])
+                """
     #====================================================================================================================================================================遊客
     #===================================================================================================================================================================
-            if sender not in admin:
+            if sender in sender:
                 if text.lower() == '抽' and settings["gameswitch"] == True:
                     contact = cl.getContact(sender)
                     a = random.choice(["大吉！！！運氣旺！ヽ(✿ﾟ▽ﾟ)ノ","中吉！運氣好～(ﾟ∀ﾟ)","小吉〜小有手氣(`・ω・´)","末吉〜還可以(,,・ω・,,)","吉〜普普通通～(´･ω･`)","凶〜有點不好(つд⊂)","大凶〜有點悲劇｡･ﾟ･(ﾉД`)ヽ(ﾟДﾟ )"])
