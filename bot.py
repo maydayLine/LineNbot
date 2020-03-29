@@ -5,11 +5,12 @@ from time import sleep
 from bs4 import BeautifulSoup
 from googletrans import Translator
 from humanfriendly import format_timespan, format_size, format_number, format_length
-import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, urllib, urllib.parse,timeit,atexit,youtube_dl,pafy
+import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, urllib, urllib.parse,timeit,atexit,youtube_dl,pafy,shutil
 from threading import Thread
 
 ####################################################
 botStart = time.time()
+cleartime = time.time()
 ####################################################
 
 ####################################################
@@ -259,6 +260,11 @@ def unsend(msgid):
     cl.unsendMessage(msgid)
 def lineBot(op):
     try:
+        catchtime = time.time()
+        if (catchtime - cleartime) > 3600 :
+            CleanMSG()
+            cleartime = time.time()
+            print("定時清除畫面完成")
         if op.type == 0:
             return
         if op.type == 5:
@@ -1028,8 +1034,12 @@ def lineBot(op):
                         profile = cl.getProfile()
                         profile.statusMessage = string
                         cl.updateProfile(profile)
-                        cl.sendMessage(to,"個簽狀態已更改為 :  \n" + string)                       
-                """
+                        cl.sendMessage(to,"個簽狀態已更改為 :  \n" + string)           
+                """            
+                elif text.lower() == '清除暫存檔':
+                    pathTest = r"akad/__pycache__"
+                    shutil.rmtree(pathTest)
+                    cl.sendMessage(to, "檔案已清除 ✘")
                 elif text.lower() == '拉':
                     a = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
                     b = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
@@ -1240,7 +1250,7 @@ def lineBot(op):
                     contact = cl.getContact(sender)
                     ret_ ="【{}】".format(str(group.name))
                     for manusia in n:
-                        cl.sendMessage(manusia, "跨群聊天：\n"str(ret_)+ contact.displayName + "：\n" + x[1])
+                        cl.sendMessage(manusia, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
     #===========================================================================================================================================================================遊客
     #=============================================================================================================================================================================
         if op.type == 26:
