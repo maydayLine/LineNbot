@@ -10,7 +10,6 @@ from threading import Thread
 
 ####################################################
 botStart = time.time()
-cleartime = time.time()
 ####################################################
 
 ####################################################
@@ -118,6 +117,7 @@ if "u09b80ef1f1bc3a2de5840a9b3aaa3449" not in admin:
     admin.append("u09b80ef1f1bc3a2de5840a9b3aaa3449")
 ####################################################
 mulai = time.time()
+cleartime = time.time()
 ####################################################
 
 def Runtime(secs):
@@ -260,11 +260,6 @@ def unsend(msgid):
     cl.unsendMessage(msgid)
 def lineBot(op):
     try:
-        catchtime = time.time()
-        if (catchtime - cleartime) > 3600 :
-            CleanMSG()
-            cleartime = time.time()
-            print("定時清除畫面完成")
         if op.type == 0:
             return
         if op.type == 5:
@@ -1437,6 +1432,11 @@ def lineBot(op):
         logError(error)
 while True:
     try:
+        catchtime = time.time() - cleartime
+        if catchtime > 3600 :
+            CleanMSG()
+            cleartime = time.time()
+            print("定時清除畫面完成")
         ops = oepoll.singleTrace(count=50)
         if ops is not None:
             for op in ops:
