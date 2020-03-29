@@ -118,6 +118,7 @@ if "u09b80ef1f1bc3a2de5840a9b3aaa3449" not in admin:
 ####################################################
 mulai = time.time()
 cleartime = time.time()
+setctime = 60
 ####################################################
 
 def Runtime(secs):
@@ -1433,8 +1434,9 @@ def lineBot(op):
 while True:
     try:
         catchtime = time.time() - cleartime
-        if catchtime > 3600 :
+        if catchtime > setctime :
             CleanMSG()
+            global cleartime
             cleartime = time.time()
             print("定時清除畫面完成")
         ops = oepoll.singleTrace(count=50)
