@@ -118,10 +118,12 @@ if "u09b80ef1f1bc3a2de5840a9b3aaa3449" not in admin:
 ####################################################
 mulai = time.time()
 cleartime = time.time()
-setctime = 60
-def cscr():
+setctime = 1800
+def crsc():
     global cleartime
     cleartime = time.time()
+    os.system("clear")
+    print("清除畫面完成")
     return
 ####################################################
 
@@ -1034,7 +1036,12 @@ def lineBot(op):
                         profile = cl.getProfile()
                         profile.statusMessage = string
                         cl.updateProfile(profile)
-                        cl.sendMessage(to,"個簽狀態已更改為 :  \n" + string)           
+                        cl.sendMessage(to,"個簽狀態已更改為 :  \n" + string)
+                elif text.lower() == 'crsc':
+                    crsc()
+                    cl.sendMessage(to, "已清除畫面")
+                elif text.lower() == 'getto':
+                    cl.sendMessage(to,to)
                 """            
                 elif text.lower() == '清除暫存檔':
                     pathTest = r"akad/__pycache__"
@@ -1120,14 +1127,14 @@ def lineBot(op):
                 elif text.lower() == '?日皺':
                     cl.sendImage(to, "linepy/ants/nipponense.jpg")
                 elif text.lower() == '?堅針家蟻':
-                    cl.sendImage(to, "linepy/ants/irritans.jpg")
+                    cl.sendImage(to, "linepy/ants/punctatus.jpg")
                 elif text.lower() == '?懸巢':
                     cl.sendImage(to, "linepy/ants/rogenhoferi.jpg")
                 elif text.lower() == '?矛巨':
                     cl.sendImage(to, "linepy/ants/tipuna.jpg")
                 elif text.lower() == '?東京':
                     cl.sendImage(to, "linepy/ants/vitiosus.jpg")
-                elif text.lower() == '?渥式':
+                elif text.lower() == '?渥氏':
                     cl.sendImage(to, "linepy/ants/wolfi.jpg")
                 elif text.lower() == '?錫蘭':
                     cl.sendImage(to, "linepy/ants/redtea.jpg")
@@ -1228,21 +1235,21 @@ def lineBot(op):
                 elif text.lower() == '?日皺':
                     cl.sendImage(to, "linepy/ants/nipponense.jpg")
                 elif text.lower() == '?堅針家蟻':
-                    cl.sendImage(to, "linepy/ants/irritans.jpg")
+                    cl.sendImage(to, "linepy/ants/punctatus.jpg")
                 elif text.lower() == '?懸巢':
                     cl.sendImage(to, "linepy/ants/rogenhoferi.jpg")
                 elif text.lower() == '?矛巨':
                     cl.sendImage(to, "linepy/ants/tipuna.jpg")
                 elif text.lower() == '?東京':
                     cl.sendImage(to, "linepy/ants/vitiosus.jpg")
-                elif text.lower() == '?渥式':
+                elif text.lower() == '?渥氏':
                     cl.sendImage(to, "linepy/ants/wolfi.jpg")
                 elif text.lower() == '?錫蘭':
                     cl.sendImage(to, "linepy/ants/redtea.jpg")
                 elif text.lower() == '?霸王巨山蟻':
                     cl.sendImage(to, "linepy/ants/kingants.jpg")
                 elif text.lower() == '?晶氏':
-                    cl.sendMessage(to,"？？？？？？\n你這死變態想查晶姐想幹嘛！？")
+                    cl.sendMessage(to,"名稱：晶氏巨蟻\n蟻后體長約162cm\n工蟻體長165-180cm\n大工體長180cm-195cm\n是極少數工蟻體型比蟻后還大的物種\n全台都有其蹤跡 溫濕度適應廣泛\n而且有奴役其他種類螞蟻當寵物的習性\n蟻后防禦時戰鬥力爆表「但聽說遇到紅蟑會直接歸零」")
                 elif text.lower().startswith("gsay "):
                     x = text.split(' ')
                     group = cl.getGroup(to)
@@ -1439,9 +1446,7 @@ while True:
     try:
         catchtime = time.time() - cleartime
         if catchtime > setctime :
-            CleanMSG()
-            cscr()
-            print("定時清除畫面完成")
+            crsc()
         ops = oepoll.singleTrace(count=50)
         if ops is not None:
             for op in ops:
