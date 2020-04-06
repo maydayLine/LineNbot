@@ -122,8 +122,6 @@ setctime = 1800
 def crsc():
     global cleartime
     cleartime = time.time()
-    os.system("clear")
-    print("清除畫面完成")
     return
 ####################################################
 
@@ -1037,9 +1035,6 @@ def lineBot(op):
                         profile.statusMessage = string
                         cl.updateProfile(profile)
                         cl.sendMessage(to,"個簽狀態已更改為 :  \n" + string)
-                elif text.lower() == 'crsc':
-                    crsc()
-                    cl.sendMessage(to, "已清除畫面")
                 elif text.lower() == 'getto':
                     cl.sendMessage(to,to)
                 """            
@@ -1190,7 +1185,7 @@ def lineBot(op):
                 elif text.lower() == 'help':
                     cl.sendMessage(to, help1())
                 elif text.lower() == '?蟻':
-                    cl.sendMessage(to, "目前螞蟻資料\n希氏 大黑 臭巨 泰勒 白疏\n北巨 高雄 矛巨 甜蜜 東京\n多樣 畢氏 懸巢 勤勉 日皺\n紅茶 黑棘 麥氏 哀愁 渥式\n爪哇 吉悌 高山鋸針\n光滑家蟻 雙脊家蟻 堅針家蟻\n霸王巨山蟻\n螞蟻資料來源：\n螞蟻軍團、螞蟻帝國\n查詢格式：?畢氏(?號請用小寫)\n陸續新增中...")
+                    cl.sendMessage(to, "目前螞蟻資料\n希氏 大黑 臭巨 泰勒 白疏\n北巨 高雄 矛巨 甜蜜 東京\n多樣 畢氏 懸巢 勤勉 日皺\n紅茶 黑棘 麥氏 哀愁 渥氏\n爪哇 吉悌 高山鋸針\n光滑家蟻 雙脊家蟻 堅針家蟻\n霸王巨山蟻\n螞蟻資料來源：\n螞蟻軍團、螞蟻帝國\n查詢格式：?畢氏(?號請用小寫)\n陸續新增中...")
                 elif text.lower() == '?畢氏':
                     cl.sendImage(to, "linepy/ants/biroi.jpg")
                 elif text.lower() == '?大黑':
@@ -1446,7 +1441,9 @@ while True:
     try:
         catchtime = time.time() - cleartime
         if catchtime > setctime :
+            os.system("clear")
             crsc()
+            print("清除畫面完成")
         ops = oepoll.singleTrace(count=50)
         if ops is not None:
             for op in ops:
