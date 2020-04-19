@@ -123,6 +123,11 @@ def crsc():
     global cleartime
     cleartime = time.time()
     return
+group1 = ["cfe1c9a3e89045c87af2a69864f784617"]
+group2 = ["c74e93d7fbb87a1bea7cb24efb81703e3"]
+group3 = ["cf8f1f7e1343500281f9850cb1b1e4136"]
+group4 = ["c0bc6177e1a12306cdc1c50968bdfc58b"]
+group5 = ["cb3bc3e2b63024e87519ca85aad894004"]
 ####################################################
 
 def Runtime(secs):
@@ -1147,13 +1152,13 @@ def lineBot(op):
     #====================================================================================================================================================================遊客
     #===================================================================================================================================================================
             if sender in sender:
-                if text.lower() == '抽' and settings["gameswitch"] == True:
+                if text.lower() == '抽' and settings["gameswitch"] == True and to[0] == 'u':
                     contact = cl.getContact(sender)
                     a = random.choice(["大吉！！！運氣旺！ヽ(✿ﾟ▽ﾟ)ノ","中吉！運氣好～(ﾟ∀ﾟ)","小吉〜小有手氣(`・ω・´)","末吉〜還可以(,,・ω・,,)","吉〜普普通通～(´･ω･`)","凶〜有點不好(つд⊂)","大凶〜有點悲劇｡･ﾟ･(ﾉД`)ヽ(ﾟДﾟ )"])
                     slot = "您今天的運氣\n{}<==\n以上是您的測試運氣結果".format(a)
                     cl.sendMessage(to,"[抽籤者]\n" + contact.displayName + "\n" + slot)               
 
-                elif text.lower() == '拉' and settings["gameswitch"] == True:
+                elif text.lower() == '拉' and settings["gameswitch"] == True and to[0] == 'u':
                     contact = cl.getContact(sender)
                     a = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
                     b = random.choice(["０","９","８","７","６","５","４","３","２","２","１"])
@@ -1168,7 +1173,7 @@ def lineBot(op):
                     cl.sendMessage(to,slot)
                     if d == e == f:
                         cl.sendMessage(to,"恭喜中獎~~")
-                elif text.lower() == '抽卡' and settings["gameswitch"] == True:
+                elif text.lower() == '抽卡' and settings["gameswitch"] == True and to[0] == 'u':
                     contact = cl.getContact(sender)
                     a = random.randint(0,1000)
                     if a <= 500:
@@ -1247,12 +1252,17 @@ def lineBot(op):
                     cl.sendMessage(to,"名稱：晶氏巨蟻\n蟻后體長約162cm\n工蟻體長165-180cm\n大工體長180cm-195cm\n是極少數工蟻體型比蟻后還大的物種\n全台都有其蹤跡 溫濕度適應廣泛\n而且有奴役其他種類螞蟻當寵物的習性\n蟻后防禦時戰鬥力爆表「但聽說遇到紅蟑會直接歸零」")
                 elif text.lower().startswith("gsay "):
                     x = text.split(' ')
-                    group = cl.getGroup(to)
-                    n = cl.getGroupIdsJoined()
-                    contact = cl.getContact(sender)
-                    ret_ ="【{}】".format(str(group.name))
-                    for manusia in n:
-                        cl.sendMessage(manusia, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
+                    if to[0] == 'u':
+                        cl.sendMessage(to,"跨群聊天只能在群組中使用喔！")
+                    if to[0] == 'c':
+                        group = cl.getGroup(to)
+                        contact = cl.getContact(sender)
+                        ret_ ="【{}】".format(str(group.name))
+                        cl.sendMessage(group1, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
+                        cl.sendMessage(group2, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
+                        cl.sendMessage(group3, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
+                        cl.sendMessage(group4, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
+                        cl.sendMessage(group5, "跨群聊天：\n" + str(ret_) + contact.displayName + "：\n" + x[1])
     #===========================================================================================================================================================================遊客
     #=============================================================================================================================================================================
         if op.type == 26:
