@@ -123,11 +123,11 @@ def crsc():
     global cleartime
     cleartime = time.time()
     return
-group1 = ["cfe1c9a3e89045c87af2a69864f784617"]
-group2 = ["c74e93d7fbb87a1bea7cb24efb81703e3"]
-group3 = ["cf8f1f7e1343500281f9850cb1b1e4136"]
-group4 = ["c0bc6177e1a12306cdc1c50968bdfc58b"]
-group5 = ["cb3bc3e2b63024e87519ca85aad894004"]
+group1 = "cfe1c9a3e89045c87af2a69864f784617"
+group2 = "c74e93d7fbb87a1bea7cb24efb81703e3"
+group3 = "cf8f1f7e1343500281f9850cb1b1e4136"
+group4 = "c0bc6177e1a12306cdc1c50968bdfc58b"
+group5 = "cb3bc3e2b63024e87519ca85aad894004"
 ####################################################
 
 def Runtime(secs):
