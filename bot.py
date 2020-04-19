@@ -1251,10 +1251,10 @@ def lineBot(op):
                 elif text.lower() == '?晶氏':
                     cl.sendMessage(to,"名稱：晶氏巨蟻\n蟻后體長約162cm\n工蟻體長165-180cm\n大工體長180cm-195cm\n是極少數工蟻體型比蟻后還大的物種\n全台都有其蹤跡 溫濕度適應廣泛\n而且有奴役其他種類螞蟻當寵物的習性\n蟻后防禦時戰鬥力爆表「但聽說遇到紅蟑會直接歸零」")
                 elif text.lower().startswith("gsay "):
-                    x = text.split(' ')
                     if to[0] == 'u':
                         cl.sendMessage(to,"跨群聊天只能在群組中使用喔！")
                     if to[0] == 'c':
+                        x = text.split(' ')
                         group = cl.getGroup(to)
                         contact = cl.getContact(sender)
                         ret_ ="【{}】".format(str(group.name))
